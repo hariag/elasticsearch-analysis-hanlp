@@ -5,13 +5,13 @@
     <name>elasticsearch-analysis-hanlp</name>
     <groupId>org.elasticsearch</groupId>
     <artifactId>elasticsearch-analysis-plugin</artifactId>
-    <version>2.0.0</version>
+    <version>5.3.0</version>
     <packaging>jar</packaging>
     <description>HanLP Analyzer for ElasticSearch</description>
     <url>http://maven.apache.org</url>
 
     <properties>
-        <elasticsearch.version>5.2.2</elasticsearch.version>
+        <elasticsearch.version>5.3.0</elasticsearch.version>
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <elasticsearch.assembly.descriptor>${project.basedir}/src/main/assemblies/plugin.xml</elasticsearch.assembly.descriptor>
