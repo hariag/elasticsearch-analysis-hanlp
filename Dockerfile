@@ -56,11 +56,11 @@ RUN unzip elasticsearch-analysis-plugin-${VERSION}.zip -d elasticsearch-${VERSIO
 #RUN tar zxf kibana-${VERSION}-linux-x86_64.tar.gz
 #RUN kibana-${VERSION}-linux-x86_64/bin/kibana-plugin install "file://`pwd`/x-pack-${VERSION}.zip"
 
-ADD /opt/elasticsearch-analysis-hanlp/setup_env.sh /opt/
-ADD /opt/elasticsearch-analysis-hanlp/start_master.sh /opt/
+cp /opt/elasticsearch-analysis-hanlp/setup_env.sh /opt/
+cp /opt/elasticsearch-analysis-hanlp/start_master.sh /opt/
 #ADD start_node.sh /opt/
 #ADD start_kibana.sh /opt/
-ADD /opt/elasticsearch-analysis-hanlp/kill_all.sh /opt/
+cp /opt/elasticsearch-analysis-hanlp/kill_all.sh /opt/
 #ADD start_kibana_master.sh /opt/
 
 RUN rm -rf /root/.m2/ /opt/apache-maven-3.5.0 /opt/elasticsearch-analysis-hanlp /opt/elasticsearch-analysis-plugin-5.3.0.zip /opt/x-pack-5.3.0.zip
