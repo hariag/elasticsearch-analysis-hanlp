@@ -45,7 +45,7 @@ RUN wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${VE
 #RUN wget https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v${VERSION}/elasticsearch-analysis-ik-${VERSION}.tar.gz
 #RUN wget https://artifacts.elastic.co/downloads/packs/x-pack/x-pack-${VERSION}.zip
 
-WORKDIR /opt/
+WORKDIR /o
 
 RUN tar zxf elasticsearch-${VERSION}.tar.gz
 #RUN mkdir -p elasticsearch-${VERSION}/plugins/elasticsearch-analysis-ik-${VERSION}
@@ -63,7 +63,7 @@ cp /opt/elasticsearch-analysis-hanlp/start_master.sh /opt/
 cp /opt/elasticsearch-analysis-hanlp/kill_all.sh /opt/
 #ADD start_kibana_master.sh /opt/
 
-RUN rm -rf /root/.m2/ /opt/apache-maven-3.5.0 /opt/elasticsearch-analysis-hanlp /opt/elasticsearch-analysis-plugin-5.3.0.zip /opt/x-pack-5.3.0.zip
+RUN rm -rf /root/.m2/ /opt/apache-maven-3.5.0 /opt/elasticsearch-analysis-hanlp /opt/elasticsearch-analysis-plugin-5.3.0.zip /opt/x-pack-5.3.0.zip elasticsearch-${VERSION}.tar.gz
 #RUN bash setup_env.sh elk
 
 RUN chown elk /opt/
