@@ -2,7 +2,7 @@ export ES_JAVA_OPTS="-Xms4g -Xmx4g"
 NUM_CPU=`cat /proc/cpuinfo | grep "processor" | wc -l`
 
 OPTIONS="-Ecluster.name=elasticsearch -Enode.master=true"
-OPTIONS="${OPTIONS} -Ediscovery.initial_state_timeout=3m -Ediscovery.zen.minimum_master_nodes=2 -Egateway.recover_after_time=2m"
+OPTIONS="${OPTIONS} -Ediscovery.initial_state_timeout=1m -Ediscovery.zen.minimum_master_nodes=1 -Egateway.recover_after_time=1m"
 OPTIONS="${OPTIONS} -Ethread_pool.index.size=$NUM_CPU"
 OPTIONS="${OPTIONS} -Ethread_pool.index.queue_size=1000"
 OPTIONS="${OPTIONS} -Ethread_pool.bulk.size=$NUM_CPU"
@@ -16,7 +16,7 @@ OPTIONS="${OPTIONS} -Enetwork.host=0.0.0.0"
 OPTIONS="${OPTIONS} -Ehttp.port=9200"
 OPTIONS="${OPTIONS} -Etransport.host=0.0.0.0"
 OPTIONS="${OPTIONS} -Etransport.tcp.port=9300"
-OPTIONS="${OPTIONS} -Ediscovery.zen.ping.unicast.hosts=${DISCOVERY_HOSTS}"
+OPTIONS="${OPTIONS} -Ediscovery.zen.ping.unicast.hosts=localhost"
 OPTIONS="${OPTIONS} -Expack.security.enabled=false"
 
 if [ "x$VERSION" != "x" ]; then
