@@ -75,4 +75,4 @@ EXPOSE 9200
 EXPOSE 9300
 
 WORKDIR /opt/
-CMD ["bash start_master", ${VERSION}]
+CMD ["bash", "start_master.sh", ${VERSION}]
