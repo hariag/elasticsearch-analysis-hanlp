@@ -38,6 +38,7 @@ RUN mvn package
 
 RUN cp /opt/elasticsearch-analysis-hanlp/target/releases/elasticsearch-analysis-plugin-${VERSION}.zip /opt && rm /opt/elasticsearch-analysis-hanlp -rf
 
+WORKDIR /opt/
 
 #RUN wget https://artifacts.elastic.co/downloads/kibana/kibana-${VERSION}-linux-x86_64.tar.gz
 RUN wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${VERSION}.tar.gz
