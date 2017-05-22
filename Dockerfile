@@ -76,4 +76,5 @@ EXPOSE 9200
 EXPOSE 9300
 
 WORKDIR /opt/
+RUN bash setup_env.sh
 CMD ["bash", "start_master.sh", ${VERSION}]
