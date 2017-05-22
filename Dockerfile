@@ -70,4 +70,9 @@ RUN chown elk elasticsearch-${VERSION} -R
 #RUN chown elk kibana-${VERSION}-linux-x86_64 -R
 
 USER elk
+
+EXPOSE 9200
+EXPOSE 9300
+
 WORKDIR /opt/
+CMD ["bash start_master", ${VERSION}]
