@@ -3,7 +3,7 @@ MAINTAINER    Haria Guo(haria.guo@gmail.com)
 
 #ADD jdk1.8.0_121.tar.gz /opt/
 #ADD apache-maven-3.5.0-bin.tar.gz /opt/
-RUN sed -i 's@//archive.ubuntu@//mirrors.aliyun@' /etc/apt/sources.list 
+#RUN sed -i 's@//archive.ubuntu@//mirrors.aliyun@' /etc/apt/sources.list 
 
 RUN apt-get update && apt-get install -y git wget procps vim net-tools unzip 
 
@@ -39,35 +39,35 @@ RUN mvn package
 RUN cp /opt/elasticsearch-analysis-hanlp/target/releases/elasticsearch-analysis-plugin-${VERSION}.zip /opt && rm /opt/elasticsearch-analysis-hanlp -rf
 
 
-RUN wget https://artifacts.elastic.co/downloads/kibana/kibana-${VERSION}-linux-x86_64.tar.gz
+#RUN wget https://artifacts.elastic.co/downloads/kibana/kibana-${VERSION}-linux-x86_64.tar.gz
 RUN wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${VERSION}.tar.gz
-RUN wget https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v${VERSION}/elasticsearch-analysis-ik-${VERSION}.tar.gz
-RUN wget https://artifacts.elastic.co/downloads/packs/x-pack/x-pack-${VERSION}.zip
+#RUN wget https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v${VERSION}/elasticsearch-analysis-ik-${VERSION}.tar.gz
+#RUN wget https://artifacts.elastic.co/downloads/packs/x-pack/x-pack-${VERSION}.zip
 
 WORKDIR /opt/
 
 RUN tar zxf elasticsearch-${VERSION}.tar.gz
 #RUN mkdir -p elasticsearch-${VERSION}/plugins/elasticsearch-analysis-ik-${VERSION}
 #RUN tar zxf elasticsearch-analysis-ik-${VERSION}.tar.gz -d elasticsearch-${VERSION}/plugins/elasticsearch-analysis-ik-${VERSION}
-RUN echo y|elasticsearch-${VERSION}/bin/elasticsearch-plugin install -s "file://`pwd`/x-pack-${VERSION}.zip"
+#RUN echo y|elasticsearch-${VERSION}/bin/elasticsearch-plugin install -s "file://`pwd`/x-pack-${VERSION}.zip"
 RUN mkdir -p elasticsearch-${VERSION}/plugins/elasticsearch-analysis-hanlp-${VERSION}
 RUN unzip elasticsearch-analysis-plugin-${VERSION}.zip -d elasticsearch-${VERSION}/plugins/elasticsearch-analysis-hanlp-${VERSION}/
-RUN tar zxf kibana-${VERSION}-linux-x86_64.tar.gz
-RUN kibana-${VERSION}-linux-x86_64/bin/kibana-plugin install "file://`pwd`/x-pack-${VERSION}.zip"
+#RUN tar zxf kibana-${VERSION}-linux-x86_64.tar.gz
+#RUN kibana-${VERSION}-linux-x86_64/bin/kibana-plugin install "file://`pwd`/x-pack-${VERSION}.zip"
 
-ADD setup_env.sh /opt/
+#ADD setup_env.sh /opt/
 ADD start_master.sh /opt/
-ADD start_node.sh /opt/
-ADD start_kibana.sh /opt/
+#ADD start_node.sh /opt/
+#ADD start_kibana.sh /opt/
 ADD kill_all.sh /opt/
-ADD start_kibana_master.sh /opt/
+#ADD start_kibana_master.sh /opt/
 
 RUN rm -rf /root/.m2/ /opt/apache-maven-3.5.0 /opt/elasticsearch-analysis-hanlp /opt/elasticsearch-analysis-plugin-5.3.0.zip /opt/x-pack-5.3.0.zip
-RUN bash setup_env.sh elk
+#RUN bash setup_env.sh elk
 
 RUN chown elk /opt/
 RUN chown elk elasticsearch-${VERSION} -R
-RUN chown elk kibana-${VERSION}-linux-x86_64 -R
+#RUN chown elk kibana-${VERSION}-linux-x86_64 -R
 
 USER elk
 WORKDIR /opt/
